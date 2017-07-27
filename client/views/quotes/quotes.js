@@ -23,5 +23,6 @@ Template.quotes.onCreated(function helloOnCreated() {
     
     Meteor.call('getQuotes', document.cookie, Session.get("currentQuotePage"), (error, result) => {
         Session.set("userquotes", result.data.results)
+        Session.set("showLoadingSpinner", false);
     });
 });

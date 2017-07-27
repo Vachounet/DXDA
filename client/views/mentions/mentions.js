@@ -23,5 +23,6 @@ Template.mentions.onCreated(function helloOnCreated() {
     
     Meteor.call('getMentions', document.cookie, Session.get("currentMentionPage"), (error, result) => {
         Session.set("mentions", result.data.results)
+        Session.set("showLoadingSpinner", false);
     });
 });
