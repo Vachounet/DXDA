@@ -1,0 +1,52 @@
+<template name="threads">
+  <style>
+    .icons-small {
+      font-size: 12px;
+    }
+      .mdc-list-item__end-detail {
+      text-decoration: none;
+      color: #ff4081; /* Pink A200 */
+    }
+  </style>
+  {{#if isProcessing}} Loading threads ... {{> spinner}} {{else}}
+
+  {{#if userFollow }}
+<button id="unsubscribe" class="mdc-button mdc-button--raised mdc-button--primary">
+          Unsubscribe
+</button>
+        {{else}}
+<button id="subscribe" class="mdc-button mdc-button--raised mdc-button--primary">
+          Subscribe
+</button>
+      {{/if}}
+ <button id="markRead" class="mdc-button mdc-button--raised mdc-button--primary">
+          Mark as read
+</button>      
+
+  <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+
+    {{#each threads}} {{> thread}} {{/each}}
+
+  </ul>
+  {{/if}}
+</template>
+
+<template name="thread">
+  <li class="mdc-list-item" style="cursor: pointer" data-interactive-list>
+    <span class="mdc-list-item__start-detail grey-bg" role="presentation">
+                  <i class="material-icons" aria-hidden="true">{{#if isSticky sticky}}visibility{{else}}play_arrow{{/if}}</i>
+</span>
+
+    <span class="mdc-list-item__text">
+                  <span class="mdc-list-item__text__primary">{{title}}</span>
+    <span class="mdc-list-item__text__secondary">
+                    <i class="material-icons icons-small" aria-hidden="true">person</i> <span class="userdetails">{{firstpost.username}}</span> - 
+                     <i class="material-icons icons-small" aria-hidden="true">timeline</i> {{views}} views and {{replycount}} replies - 
+                      Last message by {{lastposter}}</span>
+    </span>
+                    {{#if unreads unread}}
+    <a href="#" class="mdc-list-item__end-detail material-icons" aria-label="Unreads" title="Unreads" onclick="event.preventDefault();">new_releases</a>
+    {{/if}}
+
+  </li>
+</template>

@@ -1,0 +1,102 @@
+<template name="layout">
+  <style>
+    /* Ensure layout covers the entire screen. */
+
+    html {
+      height: 100%;
+    }
+    /* Stack toolbar and content on top of each other. */
+
+    .demo-body {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      height: 100%;
+    }
+    /* Place drawer and main next to each other. */
+
+    .demo-content {
+      display: flex;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    /* A quick and simple toolbar, while we're waiting for mdc-toolbar. */
+
+    .demo-toolbar {
+      display: block;
+      width: 100%;
+      height: 56px;
+      line-height: 56px;
+      padding: 0 16px;
+      box-sizing: border-box;
+      /* Place drawer under toolbar shadow. */
+      z-index: 2;
+    }
+
+    @media (min-width: 600px) {
+      .demo-toolbar {
+        height: 64px;
+        line-height: 64px;
+      }
+    }
+
+    .demo-main {
+      padding: 16px;
+      width: 100%;
+      overflow-y: scroll
+    }
+  </style>
+  <div class="mdc-typography demo-body">
+    <div class="demo-toolbar mdc-theme--primary-bg mdc-theme--text-primary-on-primary mdc-typography--title mdc-elevation--z4">{{currentPageTitle}}
+      
+    </div>
+
+    <div class="demo-content">
+      <nav class="mdc-permanent-drawer">
+        <div class="mdc-list-group">
+          <nav class="mdc-list">
+            <a id="link_back" class="mdc-list-item" href="#">
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">keyboard_backspace</i>Back
+            </a>            
+            <a id="link_user" class="mdc-list-item" href={{pathFor 'loggedin'}}>
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">place</i>Home
+            </a>
+            <a id="link_all" class="mdc-list-item" href={{pathFor 'all'}}>
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">list</i>General Forums
+            </a>
+            <a id="link_top_forums" class="mdc-list-item" href={{pathFor 'top'}}>
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">star</i>Top Forums
+            </a>
+            <a id="link_newest" class="mdc-list-item" href={{pathFor 'new'}}>
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">fiber_new</i>Newest Forums
+            </a>
+            <a id="link_subscription" class="mdc-list-item" href={{pathFor 'subscribed'}}>
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">fiber_new</i>Subscribed Forums
+            </a>
+          </nav>
+
+          <hr class="mdc-list-divider">
+
+          <nav class="mdc-list">
+            <a id="pms" class="mdc-list-item" href={{pathFor 'pms'}}>
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>{{unreadPM}} PMs
+            </a>
+            <a class="mdc-list-item" href="#">
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">format_quote</i>{{newQuotes}} Quotes
+            </a>
+            <a class="mdc-list-item" href="#">
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">assignment</i>{{newMentions}} Mentions
+            </a>
+          </nav>
+        </div>
+      </nav>
+      <main class="demo-main">
+          <div class="mdc-elevation--z1" style="width: 100%">
+        {{> yield }}
+        </div>
+      </main>
+    </div>
+  </div>
+</template>

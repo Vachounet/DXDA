@@ -1,0 +1,54 @@
+<template name="login">
+<style>
+
+      .demo-grid.max-width {
+      max-width: 1600px;
+    }
+
+    </style>
+
+  {{#if isProcessing}} Loading user informations ... {{> spinner}} {{else}}
+
+
+  <div class="demo-grid mdc-layout-grid max-width">
+    <div class="demo-cell mdc-layout-grid__cell mdc-layout-grid__cell--span-1"></div>
+    <div class="demo-cell mdc-layout-grid__cell mdc-layout-grid__cell--span-10">
+      <form>
+        <!-- <div class="form-group">
+      <label>Username</label>
+      <input type="username" id="username" class="form-control" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="password" class="form-control" placeholder="Password">
+    </div>
+    <div class="form-actions">
+
+      <a href="#" class="btn btn-form btn-primary">Login</a>
+
+    </div> -->
+        <div class="mdc-card demo-card">
+          <section class="mdc-card__primary">
+            <h1 class="mdc-card__title mdc-card__title--large">Login</h1>
+            <h2 class="mdc-card__subtitle">Please provide your credentials to start using DXDA</h2>
+          </section>
+          <section class="mdc-card__supporting-text">
+            <div class="mdc-textfield">
+              <input type="text" class="mdc-textfield__input mdc-textfield--dense" id="username" name="email" aria-controls="my-textfield-helptext">
+              <label for="username" class="mdc-textfield__label">Username</label>
+            </div>
+            <div class="mdc-textfield">
+              <input type="password" class="mdc-textfield__input mdc-textfield--dense" id="password" name="password" aria-controls="my-textfield-helptext">
+              <label for="password" class="mdc-textfield__label">Password</label>
+            </div>
+          </section>
+          <section class="mdc-card__actions">
+            <a href="#" id="button_login" class="mdc-button mdc-button--compact mdc-card__action">Send</a>
+          </section>
+        </div>
+      </form>
+    </div>
+    <div class="demo-cell mdc-layout-grid__cell mdc-layout-grid__cell--span-1"></div>
+  </div>
+  {{/if}}
+</template>

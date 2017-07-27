@@ -1,0 +1,86 @@
+{
+    "name": "DXDA",
+    "version": "0.0.1",
+    "projectName": "DXDA",
+    "devTools": true,
+    "devtron": true,
+    "desktopHCP": true,
+    "desktopHCPIgnoreCompatibilityVersion": false,
+    "autoUpdateFeedUrl": "http://127.0.0.1/update/:platform/:version",
+    "autoUpdateFeedHeaders": {},
+    "autoUpdateCheckOnStart": true,
+    "rebuildNativeNodeModules": false,
+    "webAppStartupTimeout": 60000,
+    "exposeLocalFilesystem": false,
+    "window": {
+        "icon": "@assets/meteor.png",
+        "_windows": {
+            "icon": "@assets/xda.ico"
+        }
+    },
+    "windowDev": {
+    },
+    "uglify": true,
+    "plugins": {
+        "meteor-desktop-splash-screen": {
+            "version": "0.3.0",
+            "windowSettings": {
+                "width": 800,
+                "height": 600
+            }
+        },
+        "meteor-desktop-localstorage": "0.0.11"
+    },
+    "dependencies": {},
+    "packageJsonFields": {
+        "description": "DXDA",
+        "author": "Vache",
+        "private": true
+    },
+    "builderOptions": {
+        "win": {
+            "title": "DXDA",
+            "authors": "Vache",
+            "target": "squirrel"
+        },
+        "squirrelWindows": {
+            "iconUrl": ".desktop/assets/xda.ico",
+            "loadingGif": ".desktop/assets/loading.gif"
+        },
+        "icon": ".desktop/assets/xda.ico",
+        "appId": "meteor.app",
+        "productName": "DXDA",
+        "compression": "maximum",
+        "mac": {
+            "icon": ".desktop/assets/meteor.icns"
+        },
+        "dmg": {
+            "icon": ".desktop/assets/meteor.icns",
+            "background": ".desktop/assets/dmgBackground.png",
+            "iconSize": 54,
+            "contents": [
+                { "x": 377, "y": 190, "type": "link", "path": "/Applications" },
+                { "x": 63, "y": 190, "type": "file" }
+            ],
+            "window": {
+                "width": 480,
+                "height": 300
+            }
+        }    },
+    "packagerOptions": {
+        "icon": ".desktop/assets/xda.ico",
+        "_osx": {
+            "icon": ".desktop/assets/meteor.icns"
+        },
+        "version-string": {
+            "CompanyName": "Vache Ounet",
+            "LegalCopyright": "Copyright 2017 Vache - All rights reserved.",
+            "FileDescription": "DXDA",
+            "OriginalFilename": "DXDA.exe",
+            "FileVersion": "@version",
+            "ProductVersion": "@version",
+            "ProductName": "DXDA",
+            "InternalName": "DXDA.exe"
+        }
+    }
+}

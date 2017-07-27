@@ -1,0 +1,19 @@
+<template name="loggedin">
+
+               {{#if isProcessing}}
+        Loading user informations ...
+        {{> spinner}}
+    {{else}}
+
+  <div style="text-align: center">
+    <img src="{{getAvatarURL userInfos.avatar_url}}" />
+    <a href="#" class="btn btn-form btn-primary refresh">refresh</a>
+
+    <h2>{{userInfos.username}}</h2><br />
+    <h3>{{userInfos.usertitle}}</h3><br />
+    <h3>Member since: {{getDate userInfos.joindate}}</h3><br />
+    <span>User ID: {{userInfos.userid}}</span><br />
+    
+  </div>
+  {{/if}}
+</template>

@@ -1,0 +1,36 @@
+<template name="pm">
+  <style>
+    .demo-card--with-avatar .mdc-card__primary {
+      position: relative;
+    }
+
+    .demo-card--with-avatar .demo-card__avatar img {
+      position: absolute;
+
+      height: 2.5rem;
+      /* 40sp */
+      width: 2.5rem;
+      /* 40sp */
+      border-radius: 50%;
+    }
+
+    .demo-card--with-avatar .mdc-card__title,
+    .demo-card--with-avatar .mdc-card__subtitle {
+      margin-left: 56px;
+    }
+  </style>
+  <div class="mdc-card demo-card">
+    <section class="mdc-card__primary">
+      
+      <h1 class="mdc-card__title">{{fromusername}}</h1>
+      <h2 class="mdc-card__subtitle">{{getDate dateline}}</h2>
+    </section>
+    <section class="mdc-card__supporting-text">
+      <p>{{{ bbtohtml message }}}</p>
+    </section>
+    <section class="mdc-card__actions">
+      <button id="replay" class="mdc-button mdc-button--compact mdc-card__action">Reply</button>
+    </section>
+  </div>
+
+</template>

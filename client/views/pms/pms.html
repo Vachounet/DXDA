@@ -1,0 +1,38 @@
+<template name="pms">
+      <style>
+    .icons-small {
+      font-size: 12px;
+    }
+      .mdc-list-item__end-detail {
+      text-decoration: none;
+      color: #ff4081; /* Pink A200 */
+    }
+  </style>
+    <button id="inbox" class="mdc-button mdc-button--raised mdc-button--primary">
+          Inbox
+</button>
+    <button id="outbox" class="mdc-button mdc-button--raised mdc-button--primary">
+          Outbox
+</button>
+    <button id="newMessage" class="mdc-button mdc-button--raised mdc-button--primary">
+          New Message
+</button>
+    <ul class="mdc-list mdc-list--two-line">
+        {{#each inboxMessages}}
+        <li class="mdc-list-item inbox-message" style="cursor: pointer" data-interactive-list>
+            <span class="mdc-list-item__start-detail grey-bg" role="presentation">
+                  <i class="material-icons" aria-hidden="true">message</i>
+</span>
+            <span class="mdc-list-item__text">
+                
+                <span class="mdc-list-item__text__primary">{{title}}</span>
+            
+            
+    <span class="mdc-list-item__text__secondary">
+                    <i class="material-icons icons-small" aria-hidden="true">person</i> <span class="userdetails">{{fromusername}}</span> - 
+                     <i class="material-icons icons-small" aria-hidden="true">access_time</i> {{getDate dateline}}</span>
+            </span>   
+        </li>
+        {{/each}}
+    </ul>
+</template>

@@ -1,0 +1,22 @@
+<template name="user">
+        <button onclick="window.history.back(); return false;" class="mdc-button mdc-button--compact">
+          Back
+</button>
+    <div style="text-align: center">
+    <img src="{{infos.avatar_url}}" />
+    <a href="#" class="btn btn-form btn-primary refresh">refresh</a>
+
+    <h2>{{infos.username}}</h2><br />
+    <h3>{{infos.usertitle}}</h3><br />
+    <h3>Member since: {{getDateFromTS infos.joindate}}</h3><br />
+    <span>User ID: {{infos.userid}}</span><br />
+    <span>Posts: {{infos.posts}}</span><br />
+    <span>Thanked posts: {{infos.post_thanks_thanked_posts}}</span><br />
+    <span>Thanked times: {{infos.post_thanks_thanked_times}}</span><br />
+    <span>Thanked user amount: {{infos.post_thanks_user_amount}}</span><br />
+    <span>Sig: </span><br />
+    {{{bbtohtml infos.signature}}}
+    
+  </div>
+
+</template>
