@@ -195,6 +195,22 @@ Meteor.startup(() => {
         }
       });
       return res;
+    },
+    getQuotes: function (cookies, page) {
+      var res = HTTP.get("https://api.xda-developers.com/v2/user/quotes?page=" + page, {
+        headers: {
+          Cookie: cookies
+        }
+      });
+      return res;
+    },
+    getMentions: function (cookies, page) {
+      var res = HTTP.get("https://api.xda-developers.com/v2/user/mentions?page=" + page, {
+        headers: {
+          Cookie: cookies
+        }
+      });
+      return res;
     },              
   });
 });

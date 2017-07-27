@@ -1,0 +1,26 @@
+<template name="quotes">
+      <style>
+    .icons-small {
+      font-size: 12px;
+    }
+
+  </style>
+
+    <ul class="mdc-list mdc-list--two-line">
+        {{#each userquotes}}
+        <li class="mdc-list-item quote" style="cursor: pointer" data-interactive-list>
+            <span class="mdc-list-item__start-detail grey-bg" role="presentation">
+                  <i class="material-icons" aria-hidden="true">message</i>
+</span>
+            <span class="mdc-list-item__text">
+                
+                <span class="mdc-list-item__text__primary">From {{username}} in {{thread.title}}</span>
+            
+            
+    <span class="mdc-list-item__text__secondary">
+               <i class="material-icons icons-small" aria-hidden="true">access_time</i> {{getDate dateline}}</span>
+            </span>   
+        </li>
+        {{/each}}
+    </ul>
+</template>
