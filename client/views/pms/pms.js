@@ -23,7 +23,7 @@ Template.pms.events({
         });
     },
     'click #newMessage' (event, template) {
-
+        Router.go("/newpm")
     },
     'click .inbox-message' (event, template){
         Session.set("currentInboxMessage", this);

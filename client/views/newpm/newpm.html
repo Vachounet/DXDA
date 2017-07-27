@@ -1,0 +1,21 @@
+<template name="newpm">
+<div style="text-align:center">
+    <div class="mdc-textfield">
+        <input type="text" class="mdc-textfield__input" id="to-user" name="to-user" data-no-auto-js>
+        <label for="to-user" class="mdc-textfield__label">Recipient</label>
+    </div>
+    <div class="mdc-textfield">
+        <input type="text" class="mdc-textfield__input" id="subject" name="subject" data-no-auto-js>
+        <label for="subject" class="mdc-textfield__label">Subject</label>
+    </div>
+<br />
+    <div class="mdc-textfield mdc-textfield--multiline">
+        <textarea id="message" class="mdc-textfield__input" rows="8" cols="40"></textarea>
+        <label for="message" class="mdc-textfield__label">Message Content</label>
+    </div>
+</div>
+    <br />
+    <button id="send" class="mdc-button mdc-button--raised mdc-button--primary">
+          Send Message
+</button>    
+</template>

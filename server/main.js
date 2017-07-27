@@ -211,6 +211,19 @@ Meteor.startup(() => {
         }
       });
       return res;
-    },              
+    },
+    sendNewPM: function (cookies, messageInfos) {
+      var res = HTTP.post("https://api.xda-developers.com/v2/pms/send", {
+        headers: {
+          Cookie: cookies
+        },
+        data: {
+          message: messageInfos.message,
+          subject: messageInfos.subject,
+          username: messageInfos.user
+        }
+      });
+      return res;
+    },
   });
 });
