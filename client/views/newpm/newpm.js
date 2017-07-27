@@ -20,10 +20,20 @@ Template.newpm.events({
     },
 })
 
+Template.newpm.onCreated(function templateOnRendered() {
+
+});
+
 Template.newpm.onRendered(function templateOnRendered() {
-    // Initialize all MDC components.
+    console.log("NEW PM RENDERED")
     this.$('.mdc-textfield').each((index, element) => {
-        console.log(element.id)
         textfield.MDCTextfield.attachTo(element);
+    });
+
+    this.$('textarea').froalaEditor({
+      // Set custom buttons with separator between them.
+      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
+      toolbarButtonsXS: ['undo', 'redo' , '-', 'bold', 'italic', 'underline'],
+      pluginsEnabled: null
     });
 });
