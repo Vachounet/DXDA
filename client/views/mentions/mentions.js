@@ -4,7 +4,11 @@ Template.mentions.helpers({
     },
     getDate: function (timestamp) {
         return new Date(timestamp * 1000).toUTCString();
-    },    
+    },
+    isProcessing() {
+        return Session.get("showLoadingSpinner");
+
+    },  
 })
 
 Template.mentions.events({

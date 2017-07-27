@@ -7,7 +7,8 @@
       text-decoration: none;
       color: #ff4081; /* Pink A200 */
     }
-  </style>
+</style>
+{{#if isProcessing}} {{> spinner}} {{else}}
     <button id="inbox" class="mdc-button mdc-button--raised mdc-button--primary">
           Inbox
 </button>
@@ -35,4 +36,5 @@
         </li>
         {{/each}}
     </ul>
+    {{/if}}
 </template>

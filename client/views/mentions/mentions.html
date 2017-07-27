@@ -6,6 +6,8 @@
 
   </style>
 
+{{#if isProcessing}} {{> spinner}} {{else}}
+
     <ul class="mdc-list mdc-list--two-line">
         {{#each mentions}}
         <li class="mdc-list-item quote" style="cursor: pointer" data-interactive-list>
@@ -23,4 +25,5 @@
         </li>
         {{/each}}
     </ul>
+    {{/if}}
 </template>

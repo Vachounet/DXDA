@@ -4,7 +4,11 @@ Template.pms.helpers({
     },
     getDate: function (timestamp) {
         return new Date(timestamp * 1000).toUTCString();
-    },    
+    },
+    isProcessing() {
+        return Session.get("showLoadingSpinner");
+
+    },
 })
 
 Template.pms.events({
@@ -28,12 +32,13 @@ Template.pms.events({
 })
 
 Template.pms.onRendered(function helloOnCreated() {
-    Session.set("showLoadingSpinner", false);
+
 });
 
 Template.pms.onCreated(function helloOnCreated() {
     Session.set("showLoadingSpinner", true);
     Meteor.call('getInbox', document.cookie, (error, result) => {
         Session.set("inboxMessages", result.data.results)
+        Session.set("showLoadingSpinner", false);
     });
 });
