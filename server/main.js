@@ -69,6 +69,15 @@ Meteor.startup(() => {
       });
       return res;
     },
+    getChildForums: function (cookies, fid) {
+
+      var res = HTTP.get("https://api.xda-developers.com/v2/forums/children?forumid=" + fid, {
+        headers: {
+          Cookie: cookies
+        }
+      });
+      return res;
+    },
     getSubscription: function (cookies) {
 
       var res = HTTP.get("https://api.xda-developers.com/v2/forums/subscribed", {
@@ -225,5 +234,20 @@ Meteor.startup(() => {
       });
       return res;
     },
+    postReply: function (cookies, pid, message) {
+      var res = HTTP.post("https://api.xda-developers.com/v2/posts/new", {
+        headers: {
+          Cookie: cookies
+        },
+        data: {
+          postid: pid,
+          message: message,
+          //posthash: "",
+          //poststarttime: "",
+          signature: true
+        }
+      });
+      return res;
+    },    
   });
 });
