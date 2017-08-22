@@ -1,0 +1,27 @@
+<template name="search">
+    
+            <div class="mdc-textfield">
+            <input type="text" class="mdc-textfield__input" id="search_input" name="search_input" data-no-auto-js>
+            <label for="search_input" class="mdc-textfield__label">Device</label>
+        </div>
+
+
+ <ul class="mdc-list">
+
+          {{#each devices}}
+<li class="mdc-list-item" style="cursor: pointer" data-interactive-list>
+    <span class="mdc-list-item__start-detail grey-bg" role="presentation">
+                  <i class="material-icons" aria-hidden="true">play_arrow</i>
+</span>
+                    <span class="mdc-list-item__text">
+                  {{searchable}}</span>
+     
+
+  </li>
+       
+
+      {{/each}}
+
+
+</ul>       
+</template>
