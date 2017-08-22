@@ -8,7 +8,7 @@ Template.reply.onRendered(function helloOnCreated() {
 Template.posts.events({
     'click #cancel_reply' (event, instance) {
         $(".wysibb").remove();
-        window.hostory.back()
+        window.history.back()
     },
     'click #send_reply' (event, instance) {
         var currentThread = Session.get("currentThread");
@@ -20,7 +20,7 @@ Template.posts.events({
             Session.set("postReply", false);
             Router.go(Router.current().url);
             $(".wysibb").remove();
-            window.hostory.back()
+            window.history.back()
         });
     }
 });
