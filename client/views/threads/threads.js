@@ -32,6 +32,9 @@ Template.threads.events({
     'click .mdc-list-item__text__primary' (event, instance) {
         Session.set("showLoadingSpinner", true);
         Session.set("currentPage", 0)
+        console.log(this)
+        Session.set("currentThread", this)
+         Session.set("currentPageTitle", this.title)
         Router.go("/posts/" + this.threadid);
     },
     'click .mdc-list-item__end-detail' (event, instance) {
@@ -39,6 +42,8 @@ Template.threads.events({
         Meteor.call('getUnreadsFeed', document.cookie, this.threadid, (error, result) => {
             Session.set("threads", result.data.results);
             Session.set("showLoadingSpinner", false);
+            Session.set("currentThread", this)
+            Session.set("currentPageTitle", this.title)
             Router.go("/posts/" + this.threadid + "/" + result.data.current_page);
         });
 
