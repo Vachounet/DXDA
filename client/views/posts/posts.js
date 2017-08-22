@@ -49,6 +49,9 @@ Template.post.events({
                 });
             });
         }
+    },
+    'click #edit' (event, instance){
+        
     }
 });
 
@@ -62,6 +65,9 @@ Template.posts.helpers({
     },
     pager() {
         return Session.get("pager");
+    },
+    postReply() {
+        return Session.get("postReply");
     }
 });
 
@@ -76,7 +82,7 @@ Template.posts.events({
 
             Session.set("posts", result.data.results);
             Session.set("showLoadingSpinner", false);
-
+var totalPages = result.data.total_pages;
             var boostrapPaginator = new pagination.TemplatePaginator({
                 prelink: '/',
                 current: result.data.current_page,
@@ -92,6 +98,7 @@ Template.posts.events({
                         return html;
                     }
                     prelink = this.preparePreLink(result.prelink);
+                    html += '<button data-page="1" class="mdc-button mdc-button--dense">First</a></li>';
                     if (result.previous) {
 
                         let link = Router.current().url + "/" + result.previous
@@ -114,6 +121,7 @@ Template.posts.events({
                         let link = Router.current().url + "/" + result.next
                         html += '<button data-page="' + result.next + '" class="mdc-button mdc-button--dense">' + this.options.translator('NEXT') + '</a></li>';
                     }
+                    html += '<button data-page="'+totalPages+'" class="mdc-button mdc-button--dense">Last</a></li>';
                     html += '</div>';
                     return html;
                 }
@@ -122,19 +130,39 @@ Template.posts.events({
         });
 
     },
-    'click #markRead' (event, instance) {
-       
-        Meteor.call('markAsRead', document.cookie, Session.get("tid"), (error, result) => {
-            Meteor.call('getPosts', document.cookie, Session.get("tid"), Session.get("currentPage"), (error, result) => {
-                Session.set("posts", result.data.results);
+    'click #post_reply' (event, instance) {
 
-            });
-        });
+        Router.go("reply");
+        Session.set("postReply", true);
+        //Session.set("posts", []);
+                var wbbOpt = {
+            buttons: "bold,italic,underline,|,img,link,|,code"
+        }
+        $('textarea').wysibb(wbbOpt);
     },
+    'click #cancel_reply' (event, instance) {
+
+        Session.set("postReply", false);
+
+    },
+    'click #send_reply' (event, instance) {
+        var currentThread = Session.get("currentThread");
+        var message = $("textarea").bbcode();
+        Meteor.call('postReply', document.cookie, currentThread.firstpostid, message, (error, result) => {
+            if (error)
+                console.log(error)
+
+            Session.set("postReply", false);
+            Router.go(Router.current().url)
+        });
+    }
 });
 
 Template.posts.onRendered(function helloOnCreated() {
-
+        var wbbOpt = {
+            buttons: "bold,italic,underline,|,img,link,|,code"
+        }
+        $('textarea').wysibb(wbbOpt);
 });
 
 Template.posts.onCreated(function helloOnCreated() {
@@ -149,7 +177,7 @@ Template.posts.onCreated(function helloOnCreated() {
     Meteor.call('getPosts', document.cookie, Session.get("tid"), Session.get("currentPage"), (error, result) => {
         Session.set("posts", result.data.results);
         Session.set("showLoadingSpinner", false);
-
+        var totalPages = result.data.total_pages;
         var boostrapPaginator = new pagination.TemplatePaginator({
             prelink: '/',
             current: result.data.current_page,
@@ -165,6 +193,9 @@ Template.posts.onCreated(function helloOnCreated() {
                     return html;
                 }
                 prelink = this.preparePreLink(result.prelink);
+
+                html += '<button data-page="1" class="mdc-button mdc-button--dense">First</a></li>';
+
                 if (result.previous) {
 
                     let link = Router.current().url + "/" + result.previous
@@ -187,6 +218,7 @@ Template.posts.onCreated(function helloOnCreated() {
                     let link = Router.current().url + "/" + result.next
                     html += '<button data-page="' + result.next + '" class="mdc-button mdc-button--dense">' + this.options.translator('NEXT') + '</a></li>';
                 }
+                html += '<button data-page="'+totalPages+'" class="mdc-button mdc-button--dense">Last</a></li>';
                 html += '</div>';
                 return html;
             }
