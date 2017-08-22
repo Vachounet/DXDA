@@ -14,6 +14,7 @@ caching-html-compiler@1.1.2
 callback-hook@1.0.10
 check@1.2.5
 chuangbo:cookie@1.1.0
+coffeescript@1.0.17
 ddp@1.3.0
 ddp-client@2.0.0
 ddp-common@1.2.9
@@ -49,6 +50,7 @@ jquery@1.11.10
 launch-screen@1.1.1
 livedata@1.0.18
 logging@1.1.17
+lookback:tooltips@0.6.1
 meteor@1.7.1
 meteor-base@1.1.0
 minifier-css@1.2.16

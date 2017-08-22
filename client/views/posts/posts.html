@@ -1,16 +1,11 @@
 <template name="posts">
   {{#if isProcessing}} Loading posts ... {{> spinner}} {{else}}
-   <button id="post_reply" class="mdc-button mdc-button--raised mdc-button--primary">
+  <button id="post_reply" class="mdc-button mdc-button--raised mdc-button--primary">
           New Post
 </button>
-   <button id="markRead" class="mdc-button mdc-button--raised mdc-button--primary">
+  <button id="markRead" class="mdc-button mdc-button--raised mdc-button--primary">
           Mark as read
-</button>
-
-  {{{pager}}} {{#each posts}} {{> post}} {{/each}} {{{pager}}}
-
-
-  {{/if}}
+</button> {{{pager}}} {{#each posts}} {{> post}} {{/each}} {{{pager}}} {{/if}}
 </template>
 
 <template name="post">
@@ -33,6 +28,21 @@
     .demo-card--with-avatar .mdc-card__subtitle {
       margin-left: 56px;
     }
+
+    .tooltip {
+      z-index: 1001;
+      pointer-events: none;
+      transition: opacity .1s ease-out;
+      opacity: 0;
+    }
+
+    .tooltip.hide {
+      opacity: 0;
+    }
+
+    .tooltip.show {
+      opacity: 1;
+    }
   </style>
   <div class="mdc-card demo-card demo-card--with-avatar">
     <section class="mdc-card__primary">
@@ -44,10 +54,10 @@
       <p>{{{ bbtohtml pagetext }}}</p>
     </section>
     <section class="mdc-card__actions">
-      <button id="thanks" class="mdc-button mdc-button--compact mdc-card__action">{{thanks_count}}<i style="font-size: 18px; vertical-align: middle" class="material-icons" aria-hidden="true">favorite</i></button>
+      <button id="thanks" data-tooltip="{{thanks_usernames}}" class="mdc-button mdc-button--compact mdc-card__action">{{thanks_count}}<i style="font-size: 18px; vertical-align: middle" class="material-icons" aria-hidden="true">favorite</i></button>
       <button class="mdc-button mdc-button--compact mdc-card__action"><i style="font-size: 18px; vertical-align: middle" class="material-icons" aria-hidden="true">format_quote</i></button>      {{#if isPostAuthor userid}}
       <button id="edit" class="mdc-button mdc-button--compact mdc-card__action"><i style="font-size: 18px; vertical-align: middle" class="material-icons" aria-hidden="true">edit</i></button>      {{/if}}
     </section>
   </div>
-
+{{ > tooltips }}
 </template>
