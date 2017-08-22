@@ -1,4 +1,11 @@
 <template name="subscribed">
+                 {{#if isProcessing}}
+        Loading user informations ...
+        {{> spinner}}
+    {{else}}
+    <button id="refresh" class="mdc-button mdc-button--raised mdc-button--primary">
+          Refresh
+</button>
 
 <ul class="mdc-list">
 
@@ -10,5 +17,5 @@
 
 
 </ul>
-  
+   {{/if}}
 </template>
