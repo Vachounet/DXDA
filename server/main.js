@@ -248,6 +248,21 @@ Meteor.startup(() => {
         }
       });
       return res;
-    },    
+    },
+    editReply: function (cookies, pid, message) {
+      var res = HTTP.call("PUT", "https://api.xda-developers.com/v2/posts", {
+        headers: {
+          Cookie: cookies
+        },
+        data: {
+          postid: pid,
+          message: message,
+          //posthash: "",
+          //poststarttime: "",
+          signature: true
+        }
+      });
+      return res;
+    },   
   });
 });
