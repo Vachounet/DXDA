@@ -1,4 +1,6 @@
-import { textfield } from 'meteor/zodiase:mdc-styleless';
+import {
+    textfield
+} from 'meteor/zodiase:mdc-styleless';
 
 Template.newpm.events({
     'click #send' (event, template) {
@@ -25,18 +27,11 @@ Template.newpm.onCreated(function templateOnRendered() {
 });
 
 Template.newpm.onRendered(function templateOnRendered() {
-    console.log("NEW PM RENDERED")
     this.$('.mdc-textfield').each((index, element) => {
         textfield.MDCTextfield.attachTo(element);
     });
-var wbbOpt = {
-buttons: "bold,italic,underline,|,img,link,|,code"
-}
-     this.$('textarea').wysibb(wbbOpt);
-    // this.$('textarea').froalaEditor({
-    //   // Set custom buttons with separator between them.
-    //   toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
-    //   toolbarButtonsXS: ['undo', 'redo' , '-', 'bold', 'italic', 'underline'],
-    //   pluginsEnabled: null
-    // });
+    var wbbOpt = {
+        buttons: "bold,italic,underline,|,img,link,|,code"
+    }
+    $('textarea').wysibb(wbbOpt);
 });
