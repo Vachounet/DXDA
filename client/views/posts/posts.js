@@ -50,8 +50,10 @@ Template.post.events({
             });
         }
     },
-    'click #edit' (event, instance){
-        
+    'click #edit' (event, instance) {
+        Session.set("currentEdit", this.pagetext)
+        Session.set("currentPostID", this.postid)
+        Router.go("edit");
     }
 });
 
@@ -82,7 +84,7 @@ Template.posts.events({
 
             Session.set("posts", result.data.results);
             Session.set("showLoadingSpinner", false);
-var totalPages = result.data.total_pages;
+            var totalPages = result.data.total_pages;
             var boostrapPaginator = new pagination.TemplatePaginator({
                 prelink: '/',
                 current: result.data.current_page,
@@ -121,7 +123,7 @@ var totalPages = result.data.total_pages;
                         let link = Router.current().url + "/" + result.next
                         html += '<button data-page="' + result.next + '" class="mdc-button mdc-button--dense">' + this.options.translator('NEXT') + '</a></li>';
                     }
-                    html += '<button data-page="'+totalPages+'" class="mdc-button mdc-button--dense">Last</a></li>';
+                    html += '<button data-page="' + totalPages + '" class="mdc-button mdc-button--dense">Last</a></li>';
                     html += '</div>';
                     return html;
                 }
@@ -135,7 +137,7 @@ var totalPages = result.data.total_pages;
         Router.go("reply");
         Session.set("postReply", true);
         //Session.set("posts", []);
-                var wbbOpt = {
+        var wbbOpt = {
             buttons: "bold,italic,underline,|,img,link,|,code"
         }
         $('textarea').wysibb(wbbOpt);
@@ -159,10 +161,10 @@ var totalPages = result.data.total_pages;
 });
 
 Template.posts.onRendered(function helloOnCreated() {
-        var wbbOpt = {
-            buttons: "bold,italic,underline,|,img,link,|,code"
-        }
-        $('textarea').wysibb(wbbOpt);
+    var wbbOpt = {
+        buttons: "bold,italic,underline,|,img,link,|,code"
+    }
+    $('textarea').wysibb(wbbOpt);
 });
 
 Template.posts.onCreated(function helloOnCreated() {
@@ -218,7 +220,7 @@ Template.posts.onCreated(function helloOnCreated() {
                     let link = Router.current().url + "/" + result.next
                     html += '<button data-page="' + result.next + '" class="mdc-button mdc-button--dense">' + this.options.translator('NEXT') + '</a></li>';
                 }
-                html += '<button data-page="'+totalPages+'" class="mdc-button mdc-button--dense">Last</a></li>';
+                html += '<button data-page="' + totalPages + '" class="mdc-button mdc-button--dense">Last</a></li>';
                 html += '</div>';
                 return html;
             }
