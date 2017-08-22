@@ -1,4 +1,13 @@
 <template name="forumtemplate">
+    <style>
+    .icons-small {
+      font-size: 12px;
+    }
+      .mdc-list-item__end-detail {
+      text-decoration: none;
+      color: #ff4081; /* Pink A200 */
+    }
+  </style>
  <li class="mdc-list-item" style="cursor: pointer" data-interactive-list>
     <span class="mdc-list-item__start-detail grey-bg" role="presentation">
                   <i class="material-icons" aria-hidden="true">play_arrow</i>
@@ -6,6 +15,8 @@
                     <span class="mdc-list-item__text">
                   {{title}}</span>
      
-
+                    {{#if unreads unread}}
+    <a href="#" class="mdc-list-item__end-detail material-icons" aria-label="Unreads" title="Unreads" onclick="event.preventDefault();">new_releases</a>
+    {{/if}}
   </li>
 </template>
