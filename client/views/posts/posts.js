@@ -54,6 +54,12 @@ Template.post.events({
         Session.set("currentEdit", this.pagetext)
         Session.set("currentPostID", this.postid)
         Router.go("edit");
+    },
+    'click #quote' (event, instance) {
+        Session.set("currentQuote", this.pagetext)
+        Session.set("currentUsername", this.username)
+        Session.set("currentPostID", this.postid)
+        Router.go("reply");
     }
 });
 
